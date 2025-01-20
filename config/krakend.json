@@ -1,0 +1,55 @@
+{
+    "version": 3,
+    "name": "commercex-krakend",
+    "port": 8080,
+    "timeout": "3000ms",
+    "cache_ttl": "60s",
+    "extra_config": {
+      "github_com/devopsfaith/krakend-jose/validator": {
+        "alg": "RS256",
+        "jwk-url": "https://auth.commercex.io/.well-known/jwks.json",
+        "audience": ["commercex-api"],
+        "issuer": "https://auth.commercex.io/",
+        "roles_key": "roles",
+        "roles": ["admin", "user"]
+      },
+      "github_com/devopsfaith/krakend-metrics": {
+        "collection_time": "60s",
+        "listen_address": ":9090"
+      },
+      "github_com/devopsfaith/krakend-gologging": {
+        "level": "DEBUG",
+        "prefix": "[KRAKEND]",
+        "syslog": false,
+        "stdout": true
+      }
+    },
+    "endpoints": [
+      {
+        "endpoint": "/storefront/products",
+        "method": "GET",
+        "backend": [
+          {
+            "url_pattern": "/api/storefront/products",
+            "host": ["http://commercex-bff:8081"]
+          }
+        ]
+      },
+      {
+        "endpoint": "/admin/orders",
+        "method": "GET",
+        "extra_config": {
+          "github_com/devopsfaith/krakend-jose/validator": {
+            "roles": ["admin"]
+          }
+        },
+        "backend": [
+          {
+            "url_pattern": "/api/admin/orders",
+            "host": ["http://commercex-bff:8081"]
+          }
+        ]
+      }
+    ]
+  }
+  

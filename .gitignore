@@ -1,0 +1,51 @@
+# Binaries
+/bin/
+/tmp/
+/out/
+/build/
+
+# Go dependencies
+/go.sum
+/go.work
+/go.work.sum
+/vendor/
+
+# Editor & IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Logs & Debugging
+*.log
+debug/
+trace.out
+pprof/
+
+# Generated files
+*.test
+*.exe
+*.dll
+*.dylib
+*.so
+*.out
+
+# KrakenD config backups
+krakend.json.bak
+*.backup
+
+# Docker & Kubernetes
+docker-compose.override.yml
+.kube/
+
+# Secrets (Never commit secrets!)
+.env
+.env.local
+.env.*.backup
+config/secrets.yaml
+
+# MacOS & Linux system files
+.DS_Store
+Thumbs.db
