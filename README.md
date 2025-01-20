@@ -10,4 +10,4 @@ A custom Krakend package for the [CommerceX](http://commercex.io/) framework.
 Import the package:
 
 ```go
-import "github.com/commercex-io/commercex-krakend"
+import "github.com/commercexio/commercex-krakend"
